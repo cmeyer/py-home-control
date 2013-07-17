@@ -44,6 +44,14 @@ def send(ser, message):
     send_ack(ser)
     time.sleep(0.02)
 
+def send_node_on_off(ser, node_id, on_off):
+    message = "\x09\x00\0x13"
+    message += chr(node_id)
+    message += "\x03\x20\x01"
+    message += chr(0xFF if on_off else 0x00)
+    message += chr(1 | 4)  # ACK | AUTO_ROUTE
+    send(ser, message)
+
 send(ser, "\x09\x00\x13\x04\x03\x20\x01\xFF\x05")
 send(ser, "\x09\x00\x13\x02\x03\x20\x01\x00\x05")
 send(ser, "\x09\x00\x13\x05\x03\x20\x01\x00\x05")

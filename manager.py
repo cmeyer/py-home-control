@@ -48,7 +48,7 @@ class Manager():
 		self.ser.write(ack)
 		if DEBUG:
 			self.print_message(ack, "-->")
-	def setNode(self, node, value):
+	def set_node(self, node, value):
 		assert value<=100 or value>=0
 		value=value*2.56
 		value=int(value)
@@ -56,4 +56,4 @@ class Manager():
 		self.send(["\x09","\x00", "\x13", chr(node),"\x03","\x20","\x01",chr(value),"\x05"])
 if __name__=="__main__":
 	m = Manager()
-	m.setNode(5, 255)
+	m.set_node(5, 255)

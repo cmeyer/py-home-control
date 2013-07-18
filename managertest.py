@@ -1,3 +1,3 @@
 import manager
 m = manager.Manager()
-m.setNode(5, 100)
+m.set_node(5, 100)
